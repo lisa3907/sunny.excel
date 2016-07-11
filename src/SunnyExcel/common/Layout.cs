@@ -134,6 +134,19 @@ namespace SunnyExcel
                         }
                     }
                 }
+                else if (_ctrl.GetType().Name == "ComboBox")
+                {
+                    var _combox = (_ctrl as ComboBox);
+                    var _field_name = String.Format("{0}_{1}", _combox.Parent.Name, _combox.Name);
+
+                    var _dr = p_dt.NewRow();
+                    {
+                        _dr["name"] = _field_name;
+                        _dr["value"] = _combox.SelectedIndex;
+
+                        p_dt.Rows.Add(_dr);
+                    }
+                }
 
                 if (_ctrl.Controls != null && _ctrl.HasChildren == true)
                     SaveControlLayout(_ctrl.Controls, p_form_id, ref p_dt);
@@ -240,9 +253,7 @@ namespace SunnyExcel
 
                     var _dr = p_dt.Rows.Find(_field_name);
                     if (_dr != null)
-                    {
                         _chkbox.Checked = Convert.ToBoolean(_dr["value"]);
-                    }
                 }
                 else if (_ctrl.GetType().Name == "TextBox")
                 {
@@ -258,6 +269,15 @@ namespace SunnyExcel
                             _txtbox.Text = Convert.ToString(_dr["text"]);
                         }
                     }
+                }
+                else if (_ctrl.GetType().Name == "ComboBox")
+                {
+                    var _combox = (_ctrl as ComboBox);
+                    var _field_name = String.Format("{0}_{1}", _combox.Parent.Name, _combox.Name);
+
+                    var _dr = p_dt.Rows.Find(_field_name);
+                    if (_dr != null)
+                        _combox.SelectedIndex = Convert.ToInt32(_dr["value"]);
                 }
 
                 if (_ctrl.Controls != null && _ctrl.HasChildren == true)

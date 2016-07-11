@@ -15,38 +15,38 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_0CC7324F653A4F75914E8FE5A67B4E33"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_1F7B933E196C437FA01BFE9849EF37B2"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_2F487F5F69611579EEC60590F8E3F82F"
+        "MsmKey" = "8:_519D8E570C5FA2B534E037F59D7D333C"
         "OwnerKey" = "8:_1F7B933E196C437FA01BFE9849EF37B2"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_7A9C1CA7DE0A4717A5599F02D93419F1"
+        "MsmKey" = "8:_A6356FE76FC0B98F41557D720852F3F3"
+        "OwnerKey" = "8:_1F7B933E196C437FA01BFE9849EF37B2"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_A6356FE76FC0B98F41557D720852F3F3"
+        "OwnerKey" = "8:_519D8E570C5FA2B534E037F59D7D333C"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B2CFA67E32004DCEA5068D6691934090"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_A6356FE76FC0B98F41557D720852F3F3"
-        "OwnerKey" = "8:_1F7B933E196C437FA01BFE9849EF37B2"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_A6356FE76FC0B98F41557D720852F3F3"
-        "OwnerKey" = "8:_2F487F5F69611579EEC60590F8E3F82F"
+        "MsmKey" = "8:_F349D18DAC6E40B986B96142B3EAE39D"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -58,7 +58,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_2F487F5F69611579EEC60590F8E3F82F"
+        "OwnerKey" = "8:_519D8E570C5FA2B534E037F59D7D333C"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -167,34 +167,14 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0CC7324F653A4F75914E8FE5A67B4E33"
-            {
-            "SourcePath" = "8:..\\SunnyExcel\\xls-trx2.png"
-            "TargetName" = "8:xls-trx2.png"
-            "Tag" = "8:"
-            "Folder" = "8:_C2F066E248F04DFFA1AF6E6A614A1442"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_2F487F5F69611579EEC60590F8E3F82F"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_519D8E570C5FA2B534E037F59D7D333C"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:ClosedXML, Version=0.76.0.0, Culture=neutral, PublicKeyToken=fd1eb21b62ae805b, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_2F487F5F69611579EEC60590F8E3F82F"
+                    "_519D8E570C5FA2B534E037F59D7D333C"
                     {
                     "Name" = "8:ClosedXML.dll"
                     "Attributes" = "3:512"
@@ -216,26 +196,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7A9C1CA7DE0A4717A5599F02D93419F1"
-            {
-            "SourcePath" = "8:..\\SunnyExcel\\xls-trx2.ico"
-            "TargetName" = "8:xls-trx2.ico"
-            "Tag" = "8:"
-            "Folder" = "8:_C2F066E248F04DFFA1AF6E6A614A1442"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_A6356FE76FC0B98F41557D720852F3F3"
@@ -267,6 +227,46 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B2CFA67E32004DCEA5068D6691934090"
+            {
+            "SourcePath" = "8:..\\SunnyExcel\\resources\\xls-trx2.ico"
+            "TargetName" = "8:xls-trx2.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_C2F066E248F04DFFA1AF6E6A614A1442"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F349D18DAC6E40B986B96142B3EAE39D"
+            {
+            "SourcePath" = "8:..\\SunnyExcel\\resources\\xls-trx2.png"
+            "TargetName" = "8:xls-trx2.png"
+            "Tag" = "8:"
+            "Folder" = "8:_C2F066E248F04DFFA1AF6E6A614A1442"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
         }
@@ -365,7 +365,7 @@
         "Keywords" = "8:excel"
         "ARPCOMMENTS" = "8:Excel Transformation Program"
         "ARPURLINFOABOUT" = "8:"
-        "ARPPRODUCTICON" = "8:_7A9C1CA7DE0A4717A5599F02D93419F1"
+        "ARPPRODUCTICON" = "8:_B2CFA67E32004DCEA5068D6691934090"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
@@ -479,7 +479,7 @@
             "Target" = "8:_1F7B933E196C437FA01BFE9849EF37B2"
             "Folder" = "8:_9EAA1FDEE04F4E51A360B5C037994CDF"
             "WorkingFolder" = "8:_C2F066E248F04DFFA1AF6E6A614A1442"
-            "Icon" = "8:_7A9C1CA7DE0A4717A5599F02D93419F1"
+            "Icon" = "8:_B2CFA67E32004DCEA5068D6691934090"
             "Feature" = "8:"
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_A3DAD3C75EBE45D4B21556C0BC63763F"
@@ -493,7 +493,7 @@
             "Target" = "8:_1F7B933E196C437FA01BFE9849EF37B2"
             "Folder" = "8:_1DB9636CE80B4CAEA4CB50C74487B3DF"
             "WorkingFolder" = "8:_C2F066E248F04DFFA1AF6E6A614A1442"
-            "Icon" = "8:_7A9C1CA7DE0A4717A5599F02D93419F1"
+            "Icon" = "8:_B2CFA67E32004DCEA5068D6691934090"
             "Feature" = "8:"
             }
         }

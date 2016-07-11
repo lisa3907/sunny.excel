@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
@@ -40,6 +39,9 @@ namespace SunnyExcel
         private void MainForm_Load(object sender, EventArgs e)
         {
             __clayout.RestoreFormLayout(this);
+
+            if (cbKindOfSheet.SelectedIndex == -1)
+                cbKindOfSheet.SelectedIndex = 0;
         }
 
         private void miAbout_Click(object sender, EventArgs e)
@@ -175,30 +177,39 @@ namespace SunnyExcel
                 {
                     __cancel_token_source = new CancellationTokenSource();
 
-                    var _total_pages = await CalculateTotalPages(_wb, __cancel_token_source.Token);
-
-                    tsProgressBar.Maximum = _total_pages;
-                    tsProgressBar.Step = 1;
-
-                    var _progress = new Progress<string>(s =>
+                    // 집계표 변환 작업
+                    if (cbKindOfSheet.SelectedIndex == 0)
                     {
-                        status_message.Text = s;
+                        var _worker = new TransferSheetType01();
 
-                        if (tsProgressBar.Value >= tsProgressBar.Maximum)
-                            tsProgressBar.Value = tsProgressBar.Minimum;
+                        var _start_row_number = Convert.ToInt32(tbStartRowNumber.Text);
+                        var _number_of_row_per_page = Convert.ToInt32(tbNumberOfRowPerPage.Text);
+                        var _height_of_row = Convert.ToDouble(tbHeightOfRow.Text);
 
-                        tsProgressBar.PerformStep();
+                        var _total_pages = await _worker.GetPageCount(_wb, _start_row_number, _number_of_row_per_page, __cancel_token_source.Token);
 
-                    });
+                        tsProgressBar.Maximum = _total_pages;
+                        tsProgressBar.Step = 1;
 
-                    var _success = await TransferOldToNew(_wb, _total_pages, _progress, __cancel_token_source.Token);
-                    if (_success == true)
-                    {
-                        status_message.Text = "변환 된 엑셀파일을 저장 중 입니다.";
-                        _wb.SaveAs(_after_name);
+                        var _progress = new Progress<string>(s =>
+                        {
+                            status_message.Text = s;
+
+                            if (tsProgressBar.Value >= tsProgressBar.Maximum)
+                                tsProgressBar.Value = tsProgressBar.Minimum;
+
+                            tsProgressBar.PerformStep();
+                        });
+
+                        var _success = await _worker.DoTransfer(_wb, _total_pages, _start_row_number, _number_of_row_per_page, _height_of_row, _progress, __cancel_token_source.Token);
+                        if (_success == true)
+                        {
+                            status_message.Text = "변환 된 엑셀파일을 저장 중 입니다.";
+                            _wb.SaveAs(_after_name);
+                        }
+                        else
+                            status_message.Text = "변환 작업 중 오류가 발생 하였습니다.";
                     }
-                    else
-                        status_message.Text = "변환 작업 중 오류가 발생 하였습니다.";
                 }
 
                 if (cbAfterOpen.Checked == true)
@@ -258,122 +269,6 @@ namespace SunnyExcel
             return _xlsx_name;
         }
 
-        private async Task<int> CalculateTotalPages(XLWorkbook p_before_book, CancellationToken cancellationToken)
-        {
-            var _result = 0;
-
-            await Task.Run(() =>
-            {
-                var _start_row_number = Convert.ToInt32(tbStartRowNumber.Text);
-                var _number_of_row_per_page = Convert.ToInt32(tbNumberOfRowPerPage.Text);
-
-                foreach (IXLWorksheet _ws in p_before_book.Worksheets)
-                {
-                    cancellationToken.ThrowIfCancellationRequested();
-
-                    var _last_row_number = _ws.LastRowUsed().RowNumber();
-                    _result += (int)Decimal.Round((_last_row_number - (_start_row_number - 1)) / _number_of_row_per_page);
-                }
-            });
-
-            return _result;
-        }
-
-        private async Task<bool> TransferOldToNew(XLWorkbook p_before_book, int p_total_pages, IProgress<string> p_progress, CancellationToken p_cance_token)
-        {
-            var _result = true;
-
-            await Task.Run(() =>
-            {
-                var _start_row_number = Convert.ToInt32(tbStartRowNumber.Text);
-                var _number_of_row_per_page = Convert.ToInt32(tbNumberOfRowPerPage.Text);
-                var _height_of_row = Convert.ToDouble(tbHeightOfRow.Text);
-
-                var _page_offset = 1;
-
-                foreach (IXLWorksheet _ws in p_before_book.Worksheets)
-                {
-                    var _last_row_number = _ws.LastRowUsed().RowNumber();
-                    var _number_of_pages = (int)Decimal.Round((_last_row_number - (_start_row_number - 1)) / _number_of_row_per_page);
-
-                    for (int _page_number = _number_of_pages; _page_number > 0; _page_number--, _page_offset++)
-                    {
-                        p_cance_token.ThrowIfCancellationRequested();
-
-                        p_progress.Report(String.Format("sheet-name: {0}, page:{1}/{2} 변환 중...", _ws.Name, _page_offset, p_total_pages));
-
-                        var _page_first_row = (_page_number - 1) * _number_of_row_per_page + _start_row_number;
-                        if (String.IsNullOrEmpty(_ws.Row(_page_first_row).Cell(1).GetValue<string>()))
-                            continue;
-
-                        var _row_position = _page_first_row + _number_of_row_per_page - 1;
-
-                        for (int i = 1; i <= _number_of_row_per_page; i++)
-                        {
-                            _ws.Row(_row_position).InsertRowsBelow(1);
-                            _row_position--;
-                        }
-
-                        _row_position = _page_first_row;
-
-                        for (int i = 1; i <= _number_of_row_per_page; i++)
-                        {
-                            _ws.Range(String.Format("A{0}:A{1}", _row_position, _row_position + 1)).Column(1).Merge();
-                            _ws.Range(String.Format("B{0}:B{1}", _row_position, _row_position + 1)).Column(1).Merge();
-                            _ws.Range(String.Format("C{0}:C{1}", _row_position, _row_position + 1)).Column(1).Merge();
-                            _ws.Range(String.Format("M{0}:M{1}", _row_position, _row_position + 1)).Column(1).Merge();
-
-                            var _dcell = _ws.Row(_row_position).Cell("D");
-                            var _ecell = _ws.Row(_row_position).Cell("E");
-                            var _fcell = _ws.Row(_row_position).Cell("F");
-                            var _gcell = _ws.Row(_row_position).Cell("G");
-                            var _hcell = _ws.Row(_row_position).Cell("H");
-                            var _icell = _ws.Row(_row_position).Cell("I");
-                            var _jcell = _ws.Row(_row_position).Cell("J");
-                            var _kcell = _ws.Row(_row_position).Cell("K");
-                            var _lcell = _ws.Row(_row_position).Cell("L");
-
-                            _row_position++;
-
-                            _ws.Row(_row_position).Cell("D").Value = _dcell;
-                            _ws.Row(_row_position).Cell("E").Value = _ecell;
-                            _ws.Row(_row_position).Cell("F").Value = _fcell;
-                            _ws.Row(_row_position).Cell("G").Value = _gcell;
-                            _ws.Row(_row_position).Cell("H").Value = _hcell;
-                            _ws.Row(_row_position).Cell("I").Value = _icell;
-                            _ws.Row(_row_position).Cell("J").Value = _jcell;
-                            _ws.Row(_row_position).Cell("K").Value = _kcell;
-                            _ws.Row(_row_position).Cell("L").Value = _lcell;
-
-                            _row_position++;
-                        }
-
-                        _row_position = _page_first_row;
-
-                        for (int i = 1; i <= _number_of_row_per_page; i++)
-                        {
-                            var _upper = _ws.Range(String.Format("D{0}:L{1}", _row_position, _row_position)).Cells();
-                            _upper.Style.Font.SetFontColor(XLColor.Red);
-
-                            _row_position++;
-
-                            var _bottom = _ws.Range(String.Format("D{0}:L{1}", _row_position, _row_position)).Cells();
-                            _upper.Style.Border.SetBottomBorder(XLBorderStyleValues.None);
-                            _bottom.Style.Border.SetTopBorder(XLBorderStyleValues.None);
-
-                            _row_position++;
-                        }
-
-                        var _page_last_row = _page_first_row + _number_of_row_per_page * 2 - 1;
-                        _ws.Rows(_page_first_row, _page_last_row).Height = _height_of_row;
-                    }
-                }
-            },            
-            p_cance_token);
-
-            return _result;
-        }
-
         private async Task ClearStatusMessage()
         {
             await Task.Run(() =>
@@ -397,6 +292,12 @@ namespace SunnyExcel
         {
             await Task.Run(() =>
             {
+                if (File.Exists(p_xlsx_name) == false)
+                {
+                    MessageBox.Show($"파일({Path.GetFileName(p_xlsx_name)})을 찾을 수 없습니다.");
+                    return;
+                }
+
                 Thread.Sleep(1500);
 
                 System.Diagnostics.Process.Start(p_xlsx_name);
