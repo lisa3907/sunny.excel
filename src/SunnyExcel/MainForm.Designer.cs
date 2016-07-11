@@ -52,17 +52,6 @@
             this.btBefore = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.cbAfterOpen = new System.Windows.Forms.CheckBox();
-            this.btAfter = new System.Windows.Forms.Button();
-            this.tbAfter = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.tbNumberOfRowPerPage0 = new System.Windows.Forms.TextBox();
-            this.tbStartRowNumber0 = new System.Windows.Forms.TextBox();
-            this.tbHeightOfRow0 = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.tbNumberOfRowPerPage1 = new System.Windows.Forms.TextBox();
             this.tbStartRowNumber1 = new System.Windows.Forms.TextBox();
@@ -70,13 +59,24 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.tbNumberOfRowPerPage0 = new System.Windows.Forms.TextBox();
+            this.tbStartRowNumber0 = new System.Windows.Forms.TextBox();
+            this.tbHeightOfRow0 = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cbAfterOpen = new System.Windows.Forms.CheckBox();
+            this.btAfter = new System.Windows.Forms.Button();
+            this.tbAfter = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.ssStatusBar.SuspendLayout();
             this.msMainMenu.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // ssStatusBar
@@ -306,45 +306,74 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "변환 후 파일 정보";
             // 
-            // cbAfterOpen
+            // groupBox4
             // 
-            this.cbAfterOpen.AutoSize = true;
-            this.cbAfterOpen.Checked = true;
-            this.cbAfterOpen.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbAfterOpen.Location = new System.Drawing.Point(123, 66);
-            this.cbAfterOpen.Name = "cbAfterOpen";
-            this.cbAfterOpen.Size = new System.Drawing.Size(168, 16);
-            this.cbAfterOpen.TabIndex = 19;
-            this.cbAfterOpen.Text = "변환 후 엑셀파일 자동실행";
-            this.cbAfterOpen.UseVisualStyleBackColor = true;
+            this.groupBox4.Controls.Add(this.tbNumberOfRowPerPage1);
+            this.groupBox4.Controls.Add(this.tbStartRowNumber1);
+            this.groupBox4.Controls.Add(this.tbHeightOfRow1);
+            this.groupBox4.Controls.Add(this.label10);
+            this.groupBox4.Controls.Add(this.label11);
+            this.groupBox4.Controls.Add(this.label12);
+            this.groupBox4.Location = new System.Drawing.Point(123, 165);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(615, 62);
+            this.groupBox4.TabIndex = 30;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "공사 원가 계산서";
             // 
-            // btAfter
+            // tbNumberOfRowPerPage1
             // 
-            this.btAfter.Location = new System.Drawing.Point(696, 26);
-            this.btAfter.Name = "btAfter";
-            this.btAfter.Size = new System.Drawing.Size(75, 23);
-            this.btAfter.TabIndex = 18;
-            this.btAfter.Text = "변환시작";
-            this.btAfter.UseVisualStyleBackColor = true;
-            this.btAfter.Click += new System.EventHandler(this.btAfter_Click);
+            this.tbNumberOfRowPerPage1.Location = new System.Drawing.Point(302, 25);
+            this.tbNumberOfRowPerPage1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbNumberOfRowPerPage1.Name = "tbNumberOfRowPerPage1";
+            this.tbNumberOfRowPerPage1.Size = new System.Drawing.Size(88, 21);
+            this.tbNumberOfRowPerPage1.TabIndex = 34;
+            this.tbNumberOfRowPerPage1.Text = "24";
             // 
-            // tbAfter
+            // tbStartRowNumber1
             // 
-            this.tbAfter.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.tbAfter.Location = new System.Drawing.Point(123, 29);
-            this.tbAfter.Name = "tbAfter";
-            this.tbAfter.ReadOnly = true;
-            this.tbAfter.Size = new System.Drawing.Size(567, 21);
-            this.tbAfter.TabIndex = 17;
+            this.tbStartRowNumber1.Location = new System.Drawing.Point(75, 25);
+            this.tbStartRowNumber1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbStartRowNumber1.Name = "tbStartRowNumber1";
+            this.tbStartRowNumber1.Size = new System.Drawing.Size(88, 21);
+            this.tbStartRowNumber1.TabIndex = 33;
+            this.tbStartRowNumber1.Text = "4";
             // 
-            // label2
+            // tbHeightOfRow1
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(73, 32);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 12);
-            this.label2.TabIndex = 16;
-            this.label2.Text = "파일명";
+            this.tbHeightOfRow1.Location = new System.Drawing.Point(511, 25);
+            this.tbHeightOfRow1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbHeightOfRow1.Name = "tbHeightOfRow1";
+            this.tbHeightOfRow1.Size = new System.Drawing.Size(88, 21);
+            this.tbHeightOfRow1.TabIndex = 32;
+            this.tbHeightOfRow1.Text = "9";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(404, 29);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(93, 12);
+            this.label10.TabIndex = 31;
+            this.label10.Text = "변환 후 행 높이:";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(181, 29);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(105, 12);
+            this.label11.TabIndex = 30;
+            this.label11.Text = "페이지 당 행 갯수:";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(16, 29);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(49, 12);
+            this.label12.TabIndex = 29;
+            this.label12.Text = "시작 행:";
             // 
             // groupBox3
             // 
@@ -415,74 +444,45 @@
             this.label6.TabIndex = 29;
             this.label6.Text = "시작 행:";
             // 
-            // groupBox4
+            // cbAfterOpen
             // 
-            this.groupBox4.Controls.Add(this.tbNumberOfRowPerPage1);
-            this.groupBox4.Controls.Add(this.tbStartRowNumber1);
-            this.groupBox4.Controls.Add(this.tbHeightOfRow1);
-            this.groupBox4.Controls.Add(this.label10);
-            this.groupBox4.Controls.Add(this.label11);
-            this.groupBox4.Controls.Add(this.label12);
-            this.groupBox4.Location = new System.Drawing.Point(123, 165);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(615, 62);
-            this.groupBox4.TabIndex = 30;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "공사 원가 계산서";
+            this.cbAfterOpen.AutoSize = true;
+            this.cbAfterOpen.Checked = true;
+            this.cbAfterOpen.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbAfterOpen.Location = new System.Drawing.Point(123, 66);
+            this.cbAfterOpen.Name = "cbAfterOpen";
+            this.cbAfterOpen.Size = new System.Drawing.Size(168, 16);
+            this.cbAfterOpen.TabIndex = 19;
+            this.cbAfterOpen.Text = "변환 후 엑셀파일 자동실행";
+            this.cbAfterOpen.UseVisualStyleBackColor = true;
             // 
-            // tbNumberOfRowPerPage1
+            // btAfter
             // 
-            this.tbNumberOfRowPerPage1.Location = new System.Drawing.Point(302, 25);
-            this.tbNumberOfRowPerPage1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tbNumberOfRowPerPage1.Name = "tbNumberOfRowPerPage1";
-            this.tbNumberOfRowPerPage1.Size = new System.Drawing.Size(88, 21);
-            this.tbNumberOfRowPerPage1.TabIndex = 34;
-            this.tbNumberOfRowPerPage1.Text = "24";
+            this.btAfter.Location = new System.Drawing.Point(696, 26);
+            this.btAfter.Name = "btAfter";
+            this.btAfter.Size = new System.Drawing.Size(75, 23);
+            this.btAfter.TabIndex = 18;
+            this.btAfter.Text = "변환시작";
+            this.btAfter.UseVisualStyleBackColor = true;
+            this.btAfter.Click += new System.EventHandler(this.btAfter_Click);
             // 
-            // tbStartRowNumber1
+            // tbAfter
             // 
-            this.tbStartRowNumber1.Location = new System.Drawing.Point(75, 25);
-            this.tbStartRowNumber1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tbStartRowNumber1.Name = "tbStartRowNumber1";
-            this.tbStartRowNumber1.Size = new System.Drawing.Size(88, 21);
-            this.tbStartRowNumber1.TabIndex = 33;
-            this.tbStartRowNumber1.Text = "4";
+            this.tbAfter.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.tbAfter.Location = new System.Drawing.Point(123, 29);
+            this.tbAfter.Name = "tbAfter";
+            this.tbAfter.ReadOnly = true;
+            this.tbAfter.Size = new System.Drawing.Size(567, 21);
+            this.tbAfter.TabIndex = 17;
             // 
-            // tbHeightOfRow1
+            // label2
             // 
-            this.tbHeightOfRow1.Location = new System.Drawing.Point(511, 25);
-            this.tbHeightOfRow1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tbHeightOfRow1.Name = "tbHeightOfRow1";
-            this.tbHeightOfRow1.Size = new System.Drawing.Size(88, 21);
-            this.tbHeightOfRow1.TabIndex = 32;
-            this.tbHeightOfRow1.Text = "9";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(404, 29);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(93, 12);
-            this.label10.TabIndex = 31;
-            this.label10.Text = "변환 후 행 높이:";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(181, 29);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(105, 12);
-            this.label11.TabIndex = 30;
-            this.label11.Text = "페이지 당 행 갯수:";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(16, 29);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(49, 12);
-            this.label12.TabIndex = 29;
-            this.label12.Text = "시작 행:";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(73, 32);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(41, 12);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "파일명";
             // 
             // MainForm
             // 
@@ -496,7 +496,8 @@
             this.Controls.Add(this.msMainMenu);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.msMainMenu;
-            this.MinimumSize = new System.Drawing.Size(800, 198);
+            this.MaximumSize = new System.Drawing.Size(800, 600);
+            this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "MainForm";
             this.Text = "엑셀 파일 변환 작업";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
@@ -511,10 +512,10 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
