@@ -85,6 +85,7 @@
       <DependentUpon>AboutDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="common\Config.cs" />
+    <Compile Include="transfer\TransferSheetType02.cs" />
     <Compile Include="transfer\TransferSheetType01.cs" />
     <None Include="common\ConvertXLSXToXLS.cs" />
     <Compile Include="common\Layout.cs" />

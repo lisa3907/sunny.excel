@@ -177,50 +177,70 @@ namespace SunnyExcel
                 {
                     __cancel_token_source = new CancellationTokenSource();
 
-                    // 집계표 변환 작업
+                    var _success = false;
+
+                    var _progress = new Progress<string>(s =>
+                    {
+                        status_message.Text = s;
+
+                        if (tsProgressBar.Value >= tsProgressBar.Maximum)
+                            tsProgressBar.Value = tsProgressBar.Minimum;
+
+                        tsProgressBar.PerformStep();
+                    });
+
                     if (cbKindOfSheet.SelectedIndex == 0)
                     {
+                        // 집계표 변환 작업
                         var _worker = new TransferSheetType01();
 
-                        var _start_row_number = Convert.ToInt32(tbStartRowNumber.Text);
-                        var _number_of_row_per_page = Convert.ToInt32(tbNumberOfRowPerPage.Text);
-                        var _height_of_row = Convert.ToDouble(tbHeightOfRow.Text);
+                        var _start_row_number = Convert.ToInt32(tbStartRowNumber0.Text);
+                        var _number_of_row_per_page = Convert.ToInt32(tbNumberOfRowPerPage0.Text);
+                        var _height_of_row = Convert.ToDouble(tbHeightOfRow0.Text);
 
                         var _total_pages = await _worker.GetPageCount(_wb, _start_row_number, _number_of_row_per_page, __cancel_token_source.Token);
 
                         tsProgressBar.Maximum = _total_pages;
                         tsProgressBar.Step = 1;
 
-                        var _progress = new Progress<string>(s =>
+                        _success = await _worker.DoTransfer(_wb, _total_pages, _start_row_number, _number_of_row_per_page, _height_of_row, _progress, __cancel_token_source.Token);
+                    }
+                    else if (cbKindOfSheet.SelectedIndex == 1)
+                    {
+                        // 공사원가계산서 변환 작업
+                        var _worker = new TransferSheetType02();
+
+                        var _start_row_number = Convert.ToInt32(tbStartRowNumber1.Text);
+                        var _number_of_row_per_page = Convert.ToInt32(tbNumberOfRowPerPage1.Text);
+                        var _height_of_row = Convert.ToDouble(tbHeightOfRow1.Text);
+
+                        var _total_pages = await _worker.GetPageCount(_wb, _start_row_number, _number_of_row_per_page, __cancel_token_source.Token);
+
+                        tsProgressBar.Maximum = _total_pages;
+                        tsProgressBar.Step = 1;
+
+                        _success = await _worker.DoTransfer(_wb, _total_pages, _start_row_number, _number_of_row_per_page, _height_of_row, _progress, __cancel_token_source.Token);
+                    }
+
+
+                    if (_success == true)
+                    {
+                        status_message.Text = "변환 된 엑셀파일을 저장 중 입니다.";
+                        _wb.SaveAs(_after_name);
+
+                        if (cbAfterOpen.Checked == true)
                         {
-                            status_message.Text = s;
+                            status_message.Text = "변환 된 엑셀 파일을 실행(EXEC) 합니다.";
 
-                            if (tsProgressBar.Value >= tsProgressBar.Maximum)
-                                tsProgressBar.Value = tsProgressBar.Minimum;
-
-                            tsProgressBar.PerformStep();
-                        });
-
-                        var _success = await _worker.DoTransfer(_wb, _total_pages, _start_row_number, _number_of_row_per_page, _height_of_row, _progress, __cancel_token_source.Token);
-                        if (_success == true)
-                        {
-                            status_message.Text = "변환 된 엑셀파일을 저장 중 입니다.";
-                            _wb.SaveAs(_after_name);
+                            await OpenExcelFile(_after_name);
                         }
                         else
-                            status_message.Text = "변환 작업 중 오류가 발생 하였습니다.";
+                        {
+                            status_message.Text = "변환 후 엑셀파일을 저장 하였습니다.";
+                        }
                     }
-                }
-
-                if (cbAfterOpen.Checked == true)
-                {
-                    status_message.Text = "변환 된 엑셀 파일을 실행(EXEC) 합니다.";
-
-                    await OpenExcelFile(_after_name);
-                }
-                else
-                {
-                    status_message.Text = "변환 후 엑셀파일을 저장 하였습니다.";
+                    else
+                        status_message.Text = "변환 작업 중 오류가 발생 하였습니다.";
                 }
             }
             catch (Exception ex)

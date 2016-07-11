@@ -52,21 +52,31 @@
             this.btBefore = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.tbNumberOfRowPerPage = new System.Windows.Forms.TextBox();
-            this.tbStartRowNumber = new System.Windows.Forms.TextBox();
-            this.tbHeightOfRow = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.cbAfterOpen = new System.Windows.Forms.CheckBox();
             this.btAfter = new System.Windows.Forms.Button();
             this.tbAfter = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.tbNumberOfRowPerPage0 = new System.Windows.Forms.TextBox();
+            this.tbStartRowNumber0 = new System.Windows.Forms.TextBox();
+            this.tbHeightOfRow0 = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.tbNumberOfRowPerPage1 = new System.Windows.Forms.TextBox();
+            this.tbStartRowNumber1 = new System.Windows.Forms.TextBox();
+            this.tbHeightOfRow1 = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.ssStatusBar.SuspendLayout();
             this.msMainMenu.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // ssStatusBar
@@ -168,7 +178,8 @@
             this.cbKindOfSheet.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbKindOfSheet.FormattingEnabled = true;
             this.cbKindOfSheet.Items.AddRange(new object[] {
-            "전기 공사 집계표 변환"});
+            "공사 집계표",
+            "공사원가계산서"});
             this.cbKindOfSheet.Location = new System.Drawing.Point(123, 15);
             this.cbKindOfSheet.Name = "cbKindOfSheet";
             this.cbKindOfSheet.Size = new System.Drawing.Size(297, 20);
@@ -279,12 +290,8 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.tbNumberOfRowPerPage);
-            this.groupBox2.Controls.Add(this.tbStartRowNumber);
-            this.groupBox2.Controls.Add(this.tbHeightOfRow);
-            this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.groupBox4);
+            this.groupBox2.Controls.Add(this.groupBox3);
             this.groupBox2.Controls.Add(this.cbAfterOpen);
             this.groupBox2.Controls.Add(this.btAfter);
             this.groupBox2.Controls.Add(this.tbAfter);
@@ -298,60 +305,6 @@
             this.groupBox2.TabIndex = 19;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "변환 후 파일 정보";
-            // 
-            // tbNumberOfRowPerPage
-            // 
-            this.tbNumberOfRowPerPage.Location = new System.Drawing.Point(350, 95);
-            this.tbNumberOfRowPerPage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tbNumberOfRowPerPage.Name = "tbNumberOfRowPerPage";
-            this.tbNumberOfRowPerPage.Size = new System.Drawing.Size(88, 21);
-            this.tbNumberOfRowPerPage.TabIndex = 28;
-            this.tbNumberOfRowPerPage.Text = "17";
-            // 
-            // tbStartRowNumber
-            // 
-            this.tbStartRowNumber.Location = new System.Drawing.Point(123, 95);
-            this.tbStartRowNumber.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tbStartRowNumber.Name = "tbStartRowNumber";
-            this.tbStartRowNumber.Size = new System.Drawing.Size(88, 21);
-            this.tbStartRowNumber.TabIndex = 27;
-            this.tbStartRowNumber.Text = "5";
-            // 
-            // tbHeightOfRow
-            // 
-            this.tbHeightOfRow.Location = new System.Drawing.Point(559, 95);
-            this.tbHeightOfRow.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tbHeightOfRow.Name = "tbHeightOfRow";
-            this.tbHeightOfRow.Size = new System.Drawing.Size(88, 21);
-            this.tbHeightOfRow.TabIndex = 26;
-            this.tbHeightOfRow.Text = "12.5";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(452, 99);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(93, 12);
-            this.label8.TabIndex = 25;
-            this.label8.Text = "변환 후 행 높이:";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(229, 99);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(105, 12);
-            this.label7.TabIndex = 23;
-            this.label7.Text = "페이지 당 행 갯수:";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(64, 99);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(49, 12);
-            this.label6.TabIndex = 21;
-            this.label6.Text = "시작 행:";
             // 
             // cbAfterOpen
             // 
@@ -393,6 +346,144 @@
             this.label2.TabIndex = 16;
             this.label2.Text = "파일명";
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.tbNumberOfRowPerPage0);
+            this.groupBox3.Controls.Add(this.tbStartRowNumber0);
+            this.groupBox3.Controls.Add(this.tbHeightOfRow0);
+            this.groupBox3.Controls.Add(this.label8);
+            this.groupBox3.Controls.Add(this.label7);
+            this.groupBox3.Controls.Add(this.label6);
+            this.groupBox3.Location = new System.Drawing.Point(123, 97);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(615, 62);
+            this.groupBox3.TabIndex = 29;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "공사 집계표";
+            // 
+            // tbNumberOfRowPerPage0
+            // 
+            this.tbNumberOfRowPerPage0.Location = new System.Drawing.Point(302, 25);
+            this.tbNumberOfRowPerPage0.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbNumberOfRowPerPage0.Name = "tbNumberOfRowPerPage0";
+            this.tbNumberOfRowPerPage0.Size = new System.Drawing.Size(88, 21);
+            this.tbNumberOfRowPerPage0.TabIndex = 34;
+            this.tbNumberOfRowPerPage0.Text = "17";
+            // 
+            // tbStartRowNumber0
+            // 
+            this.tbStartRowNumber0.Location = new System.Drawing.Point(75, 25);
+            this.tbStartRowNumber0.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbStartRowNumber0.Name = "tbStartRowNumber0";
+            this.tbStartRowNumber0.Size = new System.Drawing.Size(88, 21);
+            this.tbStartRowNumber0.TabIndex = 33;
+            this.tbStartRowNumber0.Text = "5";
+            // 
+            // tbHeightOfRow0
+            // 
+            this.tbHeightOfRow0.Location = new System.Drawing.Point(511, 25);
+            this.tbHeightOfRow0.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbHeightOfRow0.Name = "tbHeightOfRow0";
+            this.tbHeightOfRow0.Size = new System.Drawing.Size(88, 21);
+            this.tbHeightOfRow0.TabIndex = 32;
+            this.tbHeightOfRow0.Text = "12.5";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(404, 29);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(93, 12);
+            this.label8.TabIndex = 31;
+            this.label8.Text = "변환 후 행 높이:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(181, 29);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(105, 12);
+            this.label7.TabIndex = 30;
+            this.label7.Text = "페이지 당 행 갯수:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(16, 29);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(49, 12);
+            this.label6.TabIndex = 29;
+            this.label6.Text = "시작 행:";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.tbNumberOfRowPerPage1);
+            this.groupBox4.Controls.Add(this.tbStartRowNumber1);
+            this.groupBox4.Controls.Add(this.tbHeightOfRow1);
+            this.groupBox4.Controls.Add(this.label10);
+            this.groupBox4.Controls.Add(this.label11);
+            this.groupBox4.Controls.Add(this.label12);
+            this.groupBox4.Location = new System.Drawing.Point(123, 165);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(615, 62);
+            this.groupBox4.TabIndex = 30;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "공사 원가 계산서";
+            // 
+            // tbNumberOfRowPerPage1
+            // 
+            this.tbNumberOfRowPerPage1.Location = new System.Drawing.Point(302, 25);
+            this.tbNumberOfRowPerPage1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbNumberOfRowPerPage1.Name = "tbNumberOfRowPerPage1";
+            this.tbNumberOfRowPerPage1.Size = new System.Drawing.Size(88, 21);
+            this.tbNumberOfRowPerPage1.TabIndex = 34;
+            this.tbNumberOfRowPerPage1.Text = "24";
+            // 
+            // tbStartRowNumber1
+            // 
+            this.tbStartRowNumber1.Location = new System.Drawing.Point(75, 25);
+            this.tbStartRowNumber1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbStartRowNumber1.Name = "tbStartRowNumber1";
+            this.tbStartRowNumber1.Size = new System.Drawing.Size(88, 21);
+            this.tbStartRowNumber1.TabIndex = 33;
+            this.tbStartRowNumber1.Text = "4";
+            // 
+            // tbHeightOfRow1
+            // 
+            this.tbHeightOfRow1.Location = new System.Drawing.Point(511, 25);
+            this.tbHeightOfRow1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbHeightOfRow1.Name = "tbHeightOfRow1";
+            this.tbHeightOfRow1.Size = new System.Drawing.Size(88, 21);
+            this.tbHeightOfRow1.TabIndex = 32;
+            this.tbHeightOfRow1.Text = "9";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(404, 29);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(93, 12);
+            this.label10.TabIndex = 31;
+            this.label10.Text = "변환 후 행 높이:";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(181, 29);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(105, 12);
+            this.label11.TabIndex = 30;
+            this.label11.Text = "페이지 당 행 갯수:";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(16, 29);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(49, 12);
+            this.label12.TabIndex = 29;
+            this.label12.Text = "시작 행:";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -420,6 +511,10 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -451,14 +546,22 @@
         private System.Windows.Forms.Button btAfter;
         private System.Windows.Forms.TextBox tbAfter;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox tbHeightOfRow;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox tbNumberOfRowPerPage;
-        private System.Windows.Forms.TextBox tbStartRowNumber;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox cbKindOfSheet;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.TextBox tbNumberOfRowPerPage1;
+        private System.Windows.Forms.TextBox tbStartRowNumber1;
+        private System.Windows.Forms.TextBox tbHeightOfRow1;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.TextBox tbNumberOfRowPerPage0;
+        private System.Windows.Forms.TextBox tbStartRowNumber0;
+        private System.Windows.Forms.TextBox tbHeightOfRow0;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
     }
 }
 
