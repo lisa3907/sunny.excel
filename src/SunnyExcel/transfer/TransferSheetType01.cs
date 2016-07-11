@@ -123,6 +123,9 @@ namespace SunnyExcel
 
                         _row_position = _page_first_row;
 
+                        // 첫 줄은 규격 컬럼까지 병합 함
+                        _ws.Range(String.Format("A{0}:B{1}", _row_position, _row_position + 1)).Merge();
+
                         // 첫줄의 글자색을 red-color로 변경 하고, 하단 테두리를 삭제 합니다.
                         for (int i = 1; i <= p_number_of_row_per_page; i++)
                         {
