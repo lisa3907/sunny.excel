@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using ClosedXML.Excel;
 
 namespace SunnyExcel
@@ -26,8 +27,12 @@ namespace SunnyExcel
                 {
                     p_cancel_token.ThrowIfCancellationRequested();
 
-                    var _last_row_number = _ws.LastRowUsed().RowNumber();
-                    _result += (int)Decimal.Round((_last_row_number - (p_start_row_number - 1)) / p_number_of_row_per_page);
+                    var _last_row_used = _ws.LastRowUsed();
+                    if (_last_row_used != null)
+                    {
+                        var _last_row_number = _last_row_used.RowNumber();
+                        _result += (int)Decimal.Round((_last_row_number - (p_start_row_number - 1)) / p_number_of_row_per_page);
+                    }
                 }
             });
 
@@ -60,7 +65,11 @@ namespace SunnyExcel
 
                 foreach (IXLWorksheet _ws in p_before_book.Worksheets)
                 {
-                    var _last_row_number = _ws.LastRowUsed().RowNumber();
+                    var _last_row_used = _ws.LastRowUsed();
+                    if (_last_row_used == null)
+                        continue;
+
+                    var _last_row_number = _last_row_used.RowNumber();
                     var _number_of_pages = (int)Decimal.Round((_last_row_number - (p_start_row_number - 1)) / p_number_of_row_per_page);
 
                     for (int _page_number = _number_of_pages; _page_number > 0; _page_number--, _page_offset++)
