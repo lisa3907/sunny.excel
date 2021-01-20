@@ -44,13 +44,13 @@ namespace SunnyExcel
         /// <param name="p_number_of_row_per_page"></param>
         /// <param name="p_height_of_row"></param>
         /// <param name="p_progress"></param>
-        /// <param name="p_cance_token"></param>
+        /// <param name="p_cancel_token"></param>
         /// <returns></returns>
         public async Task<bool> DoTransfer
             (
                 XLWorkbook p_before_book, 
                 int p_total_pages, int p_start_row_number, int p_number_of_row_per_page, double p_height_of_row, 
-                IProgress<string> p_progress, CancellationToken p_cance_token
+                IProgress<string> p_progress, CancellationToken p_cancel_token
             )
         {
             var _result = true;
@@ -66,7 +66,7 @@ namespace SunnyExcel
 
                     for (int _page_number = _number_of_pages; _page_number > 0; _page_number--, _page_offset++)
                     {
-                        p_cance_token.ThrowIfCancellationRequested();
+                        p_cancel_token.ThrowIfCancellationRequested();
 
                         p_progress.Report(String.Format("sheet-name: {0}, page:{1}/{2} 변환 중...", _ws.Name, _page_offset, p_total_pages));
 
@@ -148,7 +148,7 @@ namespace SunnyExcel
                     }
                 }
             },
-            p_cance_token);
+            p_cancel_token);
 
             return _result;
         }
